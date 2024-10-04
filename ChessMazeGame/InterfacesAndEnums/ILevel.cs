@@ -29,4 +29,30 @@ public interface ILevel
     /// Determines if the level is completed.
     /// </summary>
     bool IsCompleted { get; }
+
+    /// <summary>
+    /// Moves the player to a new position.
+    /// <para name="newPosition">The new location of the player</para>
+    /// </summary>
+    bool MovePlayer(IPosition newPosition);
+
+    /// <summary>
+    /// Gets the lenght of MoveHistory in player
+    /// </summary>
+    int GetMoveCount();
+
+    /// <summary>
+    /// pops the last move from the player's MoveHistory and sets the player's current position to the last move
+    /// </summary>
+    void Undo();
+
+    /// <summary>
+    /// Gets the available moves for the player
+    /// </summary>
+    List<IPosition> GetAvailableMoves();
+
+    /// <summary>
+    /// Gets the move history of the player
+    /// </summary>
+    List<IPosition> GetMoveHistory();
 }

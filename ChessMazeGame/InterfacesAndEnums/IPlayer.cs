@@ -10,6 +10,11 @@ public interface IPlayer
     /// </summary>
     IPosition CurrentPosition { get; set; }
 
+    ///<summary>
+    /// Gets or sets the total moves the player has proformed
+    /// </summary>
+    List<IPosition> MoveHistory { get; set; }
+
     /// <summary>
     /// Determines if the player can move to a new position on the board.
     /// </summary>
@@ -24,4 +29,15 @@ public interface IPlayer
     /// <param name="newPosition">The new position to move to.</param>
     /// <param name="board">The game board.</param>
     void Move(IPosition newPosition, IBoard board);
+
+    /// <summary>
+    /// Undoes the last move made by the player.
+    /// </summary>
+    void UndoMove();
+
+    /// <summary>
+    /// Get all the available moves for the player
+    /// <param name="board">The game board.</param>
+    /// </summary>
+    List<IPosition> GetAvailableMoves(IBoard board);
 }

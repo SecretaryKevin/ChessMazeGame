@@ -8,13 +8,24 @@ public interface IGame
     /// <summary>
     /// Gets the current level being played.
     /// </summary>
-    ILevel CurrentLevel { get; }
+    ILevel? CurrentLevel { get; }
+
+    /// <summary>
+    /// A list of all levels in the game.
+    /// </summary>
+    List<ILevel?> AllLevels { get; }
+
+    /// <summary>
+    /// Set the current level to the specified level number.
+    /// <param name="levelNumber">The level number to set.</param>
+    /// </summary>
+    void SetCurrentLevel(int levelNumber);
 
     /// <summary>
     /// Loads a specified level into the game.
     /// </summary>
     /// <param name="aLevel">The level to load.</param>
-    void LoadLevel(ILevel aLevel);
+    void LoadLevel(ILevel? aLevel);
 
     /// <summary>
     /// Attempts to make a move to a new position.
@@ -43,4 +54,19 @@ public interface IGame
     /// Restarts the current game level.
     /// </summary>
     void Restart();
+
+    /// <summary>
+    /// Gets the time elapsed since the game started.
+    /// </summary>
+    TimeSpan GetElapsedTime();
+
+    /// <summary>
+    /// Get the available moves for the player.
+    /// </summary>
+    List<IPosition> GetAvailableMoves();
+
+    /// <summary>
+    /// Gets the move history of the player
+    /// </summary>
+    List<IPosition> GetMoveHistory();
 }
