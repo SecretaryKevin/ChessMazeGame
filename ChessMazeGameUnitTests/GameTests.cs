@@ -62,7 +62,7 @@ public class GameTests
     [TestMethod]
     public void getMoveCount_ShouldReturnCorrectMoveCount()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);
@@ -81,7 +81,7 @@ public class GameTests
     [TestMethod]
     public void Undo_ShouldUndoMove()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(3, 3));
@@ -96,7 +96,7 @@ public class GameTests
     [TestMethod]
     public void GetElapsedTime_ShouldReturnATime()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(3, 3));
@@ -118,7 +118,7 @@ public class GameTests
     [TestMethod]
     public void GetAvailableMoves_ShouldReturnCorrectMoves()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);
@@ -131,7 +131,7 @@ public class GameTests
     [TestMethod]
     public void GetAvailableMoves_ShouldReturnNoMoves()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(5, 6));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(5,6)), false);
@@ -144,7 +144,7 @@ public class GameTests
     [TestMethod]
     public void CheckGameOver_ShouldSetIsGameOverToFalse()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);
@@ -156,7 +156,7 @@ public class GameTests
     [TestMethod]
     public void CheckGameOver_ShouldSetIsGameOverToTrue()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), true);
@@ -169,7 +169,7 @@ public class GameTests
     [TestMethod]
     public void GetMoveHistory_ShouldReturnCorrectMoveHistory()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);
@@ -183,7 +183,7 @@ public class GameTests
     [TestMethod]
     public void GetMoveHistory_ShouldReturnEmptyMoveHistory()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);
@@ -196,7 +196,7 @@ public class GameTests
     [TestMethod]
     public void MakeMove_ShouldMakeGameOverAfterMove()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);
@@ -209,7 +209,7 @@ public class GameTests
     [TestMethod]
     public void MakeMove_ShouldNotMakeGameOverAfterMove()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         ILevel level = new Level(board, new Position(1, 1), new Position(2, 2), new Player(new Position(1,1)), false);

@@ -111,7 +111,9 @@ public class Board : IBoard
                        (Math.Abs(from.Row - to.Row) == 1 && Math.Abs(from.Column - to.Column) == 2);
 
             case PieceType.Rook:
-                return from.Row == to.Row || from.Column == to.Column;
+                // Check if the move is either vertical or horizontal and is only move 1 space
+                return (from.Row == to.Row && Math.Abs(from.Column - to.Column) == 1) ||
+                       (from.Column == to.Column && Math.Abs(from.Row - to.Row) == 1);
 
             case PieceType.Empty:
                 throw new Exception("Piece type is empty, move is not legal.");

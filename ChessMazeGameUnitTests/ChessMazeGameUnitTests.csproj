@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ChessMazeGame\ChessMazeGame.csproj" />
+      <ProjectReference Include="..\ChessMazeGameModel\ChessMazeGameModel.csproj" />
     </ItemGroup>
 
 </Project>

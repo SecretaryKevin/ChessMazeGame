@@ -17,7 +17,7 @@ public class PlayerTests
     public void AddMoveToHistory_ShouldAddMoveToHistory()
     {
         IPlayer player = new Player(new Position(1,1));
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         player.Move(new Position(2,2), board);
@@ -28,7 +28,7 @@ public class PlayerTests
     public void Move_ShouldMovePiece()
     {
         IPlayer player = new Player(new Position(1,1));
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         player.Move(new Position(2,2), board);
@@ -40,7 +40,7 @@ public class PlayerTests
     public void Move_ShouldThrowExceptionIfPieceCannotMove()
     {
         IPlayer player = new Player(new Position(1,1));
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
         Assert.ThrowsException<Exception>(() => player.Move(new Position(1,1), board));

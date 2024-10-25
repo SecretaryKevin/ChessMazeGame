@@ -8,7 +8,7 @@ public class LevelTests
     [TestMethod]
     public void Level_ShouldInitializeCorrectly()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         IPosition startPosition = new Position(0, 0);
         IPosition endPosition = new Position(7, 7);
         IPlayer player = new Player(new Position(0,0));
@@ -26,7 +26,7 @@ public class LevelTests
     [TestMethod]
     public void Undo_ShouldThrowExceptionIfNoMovesToUndo()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         IPosition startPosition = new Position(0, 0);
         IPosition endPosition = new Position(7, 7);
         IPlayer player = new Player(new Position(0,0));
@@ -40,7 +40,7 @@ public class LevelTests
     [TestMethod]
     public void Undo_ShouldUndoLastMove()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(0, 0));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
@@ -64,7 +64,7 @@ public class LevelTests
     [TestMethod]
     public void GetMoveCount_ShouldReturnCorrectMoveCount()
     {
-        IBoard board = new Board(8, 8);
+        IBoard? board = new Board(8, 8);
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(0, 0));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
         board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));

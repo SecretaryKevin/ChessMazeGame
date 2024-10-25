@@ -2,9 +2,9 @@
 
 namespace ChessMazeGame.Model
 {
-    public class Level(IBoard board, IPosition startPosition, IPosition endPosition, IPlayer player, bool isCompleted) : ILevel
+    public class Level(IBoard? board, IPosition startPosition, IPosition endPosition, IPlayer player, bool isCompleted) : ILevel
     {
-        public IBoard Board { get; } = board;
+        public IBoard? Board { get; } = board;
         public IPosition StartPosition { get; } = startPosition;
         public IPosition EndPosition { get; } = endPosition;
         public IPlayer Player { get; } = player;
@@ -40,6 +40,7 @@ namespace ChessMazeGame.Model
                 if (Player.MoveHistory.Count == 1)
                 {
                     Player.CurrentPosition = StartPosition;
+                    Player.MoveHistory.Clear(); // Clear the move history
                 }
                 else
                 {
@@ -60,6 +61,16 @@ namespace ChessMazeGame.Model
         public List<IPosition> GetMoveHistory()
         {
             return Player.MoveHistory;
+        }
+
+        public IPiece GetPieceAt(IPosition position)
+        {
+            return Board.GetPieceAt(position);
+        }
+
+        public IPosition GetPlayerPosition()
+        {
+            return Player.CurrentPosition;
         }
     }
 }

@@ -8,7 +8,7 @@ public interface ILevel
     /// <summary>
     /// Gets the game board for this level.
     /// </summary>
-    IBoard Board { get; }
+    IBoard? Board { get; }
 
     /// <summary>
     /// Gets the start position for this level.
@@ -55,4 +55,10 @@ public interface ILevel
     /// Gets the move history of the player
     /// </summary>
     List<IPosition> GetMoveHistory();
+
+    /// <summary>
+    /// Get the piece at the given position
+    /// <para name="position">The position of the piece</para>
+    /// </summary>
+    IPiece GetPieceAt(IPosition position);
 }

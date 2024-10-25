@@ -7,7 +7,7 @@ namespace ChessMazeGame.Model
         public IPosition CurrentPosition { get; set; } = currentPosition;
         public List<IPosition> MoveHistory { get; set; } = [];
 
-        public bool CanMove(IPosition newPosition, IBoard board)
+        public bool CanMove(IPosition newPosition, IBoard? board)
         {
             if (CurrentPosition.Row == newPosition.Row && CurrentPosition.Column == newPosition.Column)
             {
@@ -17,7 +17,7 @@ namespace ChessMazeGame.Model
             return board.IsValidPosition(newPosition) && board.IsMoveLegal(CurrentPosition, newPosition);
         }
 
-        public void Move(IPosition newPosition, IBoard board)
+        public void Move(IPosition newPosition, IBoard? board)
         {
             // Requests move then if confirmed work update player and history else throw exception
             if (CanMove(newPosition, board))
@@ -38,7 +38,7 @@ namespace ChessMazeGame.Model
             MoveHistory.RemoveAt(MoveHistory.Count - 1);
         }
 
-        public List<IPosition> GetAvailableMoves(IBoard board)
+        public List<IPosition> GetAvailableMoves(IBoard? board)
         {
             // Loops Through all locations on the board and checks if the player can move to that location
             // If the player can move to that location, it adds it to the list of available moves

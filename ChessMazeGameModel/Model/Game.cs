@@ -19,6 +19,12 @@ public class Game : IGame
         }
     }
 
+    public int GetCurrentLevelNumber()
+    {
+        return AllLevels.IndexOf(CurrentLevel) + 1;
+    }
+
+
     public void SetCurrentLevel(int levelNumber)
     {
         if (levelNumber > AllLevels.Count)
@@ -68,13 +74,12 @@ public class Game : IGame
 
     public TimeSpan GetElapsedTime()
     {
-        if (!_isGameOver)
+        if (_isGameOver)
         {
-            throw new Exception("Game has not ended yet");
+            return _endTime - _startTime;
         }
-        return _endTime - _startTime;
+        return DateTime.Now - _startTime;
     }
-
     public List<IPosition> GetAvailableMoves()
     {
         return CurrentLevel.GetAvailableMoves();
@@ -83,5 +88,25 @@ public class Game : IGame
     public List<IPosition> GetMoveHistory()
     {
         return CurrentLevel.GetMoveHistory();
+    }
+
+    public IPiece GetPieceAt(IPosition position)
+    {
+        return CurrentLevel.GetPieceAt(position);
+    }
+
+    public int GetRows()
+    {
+        return CurrentLevel.Board.Rows;
+    }
+
+    public int GetColumns()
+    {
+        return CurrentLevel.Board.Columns;
+    }
+
+    public int GetLevelCount()
+    {
+        return AllLevels.Count;
     }
 }
