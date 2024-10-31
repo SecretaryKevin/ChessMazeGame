@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AControl_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FSourcesCache_003Fa96e3d352c820588c15ddd8373c2183278ff879be09fe7c028e3bb3aabe13_003FControl_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	
 	
 	
@@ -24,10 +25,16 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9ff3ac18_002Dab54_002D4d7f_002D8d90_002D54e972229878/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d58a748b_002Dec41_002D4119_002Dbe7a_002D7b3d0c8eac9f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;ChessMazeGameUnitTests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d58a748b_002Dec41_002D4119_002Dbe7a_002D7b3d0c8eac9f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;ChessMazeGameUnitTests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\dtemp\OneDrive - Ara Institute of Canterbury\2024\BCDE222 Best Programming Practices (C#.NET)\ChessMazeGame\ChessMazeGameUnitTests" Presentation="&amp;lt;ChessMazeGameUnitTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d5ad8089_002D3b6c_002D47b9_002D8436_002D09ac8f55f8e5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PieceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\dlt0076\OneDrive - Ara Institute of Canterbury\2024\BCDE222 Best Programming Practices (C#.NET)\ChessMazeGame\ChessMazeGameUnitTests" Presentation="&amp;lt;ChessMazeGameUnitTests&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d5ad8089_002D3b6c_002D47b9_002D8436_002D09ac8f55f8e5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="PieceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;ProjectFile&gt;BF7B8D5C-8109-4AB7-9B62-EBD54A606A67/f:BoardTests.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;ProjectFile&gt;BF7B8D5C-8109-4AB7-9B62-EBD54A606A67/f:GameTests.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;ProjectFile&gt;BF7B8D5C-8109-4AB7-9B62-EBD54A606A67/f:LevelTests.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;ProjectFile&gt;BF7B8D5C-8109-4AB7-9B62-EBD54A606A67/f:PieceTest.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;ProjectFile&gt;BF7B8D5C-8109-4AB7-9B62-EBD54A606A67/f:PlayerTests.cs&lt;/ProjectFile&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

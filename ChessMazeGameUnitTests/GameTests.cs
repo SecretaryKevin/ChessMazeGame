@@ -90,7 +90,7 @@ public class GameTests
         game.SetCurrentLevel(game.AllLevels.Count);
         game.MakeMove(new Position(2, 2));
         game.Undo();
-        Assert.AreEqual(1, game.GetMoveCount());
+        Assert.AreEqual(0, game.GetMoveCount());
     }
 
     [TestMethod]
@@ -110,9 +110,18 @@ public class GameTests
     }
 
     [TestMethod]
-    public void GetElapsedTime_ShouldThrowExceptionIfGameIsNotFinished()
+    public void GetElapsedTime_ShouldGetTimeEvenifGameIsntOver()
     {
-        Assert.ThrowsException<Exception>(() => game.GetElapsedTime());
+        IBoard? board = new Board(8, 8);
+        board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(1, 1));
+        board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(2, 2));
+        board.PlacePiece(new Piece(PieceType.Bishop, PieceColour.Black), new Position(3, 3));
+        ILevel level = new Level(board, new Position(1, 1), new Position(3, 3), new Player(new Position(1,1)), false);
+        game.LoadLevel(level);
+        game.SetCurrentLevel(game.AllLevels.Count);
+        game.MakeMove(new Position(2, 2));
+        TimeSpan time = game.GetElapsedTime();
+        Assert.IsTrue(time.TotalMilliseconds > 0);
     }
 
     [TestMethod]
