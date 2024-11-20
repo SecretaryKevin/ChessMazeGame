@@ -4,25 +4,55 @@ namespace ChessMazeGameWindowsForm;
 
 public partial class GameForm : Form
 {
-    private ViewModel _viewModel;
-    private int _cellSize;
+    private readonly ViewModel _viewModel;
+    private  int _cellSize;
     private Panel _selectedSquare;
     private Color _originalFill;
     public GameForm()
     {
         InitializeComponent();
         _viewModel = new ViewModel();
-        _cellSize = 50;
-        _viewModel.PropertyChanged += ViewModel_PropertyChanged;
-        _viewModel.PropertyChanged += ViewModel_MoveHistoryChanged;
-        drawBoard();
+        _cellSize = 75;
+        _viewModel.PropertyChanged += ViewModel_PropertyChanged!;
+        _viewModel.PropertyChanged += ViewModel_MoveHistoryChanged!;
+        _viewModel.PropertyChanged += ViewModel_MoveCountChanged!;
+        Resize += GameForm_Resize!;
+        MinimumSize = new Size(800, 600);
+        DrawBoard();
+    }
+
+    public sealed override Size MinimumSize
+    {
+        get { return base.MinimumSize; }
+        set { base.MinimumSize = value; }
     }
 
     private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(ViewModel.CurrentLevel))
         {
-            drawBoard();
+            DrawBoard();
+        }
+    }
+
+    private void GameForm_Resize(object sender, EventArgs e)
+    {
+        // Calculate the available space for the board
+        int margin = 20;
+        int availableWidth = ClientSize.Width - (moveHistoryTextBox.Width + margin);
+        int availableHeight = ClientSize.Height - (margin * 2);
+
+        // Calculate new cell size based on the available space
+        int boardSize = Math.Min(availableWidth, availableHeight);
+        _cellSize = boardSize / Math.Max(_viewModel.CurrentLevel.Board.Rows, _viewModel.CurrentLevel.Board.Columns);
+        DrawBoard();
+    }
+
+    private void ViewModel_MoveCountChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ViewModel.MoveCount))
+        {
+            moveCountLabel.Text = $"Move Count: {_viewModel.MoveCount}";
         }
     }
 
@@ -34,8 +64,7 @@ public partial class GameForm : Form
         }
     }
 
-
-    private void drawBoard()
+    private void DrawBoard()
     {
         BoardPanel.Controls.Clear();
 
@@ -51,14 +80,18 @@ public partial class GameForm : Form
             throw new Exception("No Board Found");
         }
 
+        // Calculate the size of the board panel dynamically
+        int boardWidth = level.Board.Columns * _cellSize;
+        int boardHeight = level.Board.Rows * _cellSize;
+
         // Set the size of the board panel
-        BoardPanel.Width = level.Board.Columns * _cellSize;
-        BoardPanel.Height = level.Board.Rows * _cellSize;
+        BoardPanel.Width = boardWidth;
+        BoardPanel.Height = boardHeight;
 
         // Center the BoardPanel within the GameForm
         BoardPanel.Location = new Point(
-            (ClientSize.Width - BoardPanel.Width) / 2,
-            (ClientSize.Height - BoardPanel.Height) / 2
+            (ClientSize.Width - boardWidth) / 2,
+            (ClientSize.Height - boardHeight) / 2
         );
 
         for (int row = 0; row < level.Board.Rows; row++)
@@ -142,7 +175,7 @@ public partial class GameForm : Form
     private void UndoButton_Click(object sender, EventArgs e)
     {
         _viewModel.UndoMove();
-        drawBoard();
+        DrawBoard();
     }
 
     private void nonPlayer_MouseClick(object sender, MouseEventArgs e, Panel square)
@@ -159,7 +192,7 @@ public partial class GameForm : Form
             {
                 _selectedSquare.BackColor = _originalFill;
             }
-            drawBoard();
+            DrawBoard();
 
             // Update MovesHistory
             _viewModel.MovesHistory += $"Moved to ({move.Row}, {move.Column})\n";

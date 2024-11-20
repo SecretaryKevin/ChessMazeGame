@@ -38,15 +38,20 @@ namespace ChessMazeGameWindowsForm
                 OnPropertyChanged();
             }
         }
+
         public int MoveCount
         {
             get => _moveCount;
             set
             {
-                _moveCount = value;
-                OnPropertyChanged();
+                if (_moveCount != value)
+                {
+                    _moveCount = value;
+                    OnPropertyChanged(nameof(MoveCount));
+                }
             }
         }
+
 
         public void LoadData()
         {

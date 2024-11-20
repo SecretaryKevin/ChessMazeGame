@@ -45,14 +45,22 @@ public class Board : IBoard
     {
         if (IsValidPosition(to))
         {
-            if (IsMoveLegal(from, to))
+            try
             {
-                PlacePiece(GetPieceAt(from), to);
-                RemovePiece(from);
+                if (IsMoveLegal(from, to))
+                {
+                    PlacePiece(GetPieceAt(from), to);
+                    RemovePiece(from);
+                }
+                else
+                {
+                    throw new Exception("Move is not legal.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception("Move is not legal.");
+                // Handle the exception (e.g., log it, show a message to the user, etc.)
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
         else
@@ -101,8 +109,8 @@ public class Board : IBoard
         switch (fromPiece.Type)
         {
             case PieceType.Bishop:
-                return Math.Abs(from.Row - to.Row) == Math.Abs(from.Column - to.Column);
-
+                // check if the move on a diangonal and is only 1 space
+                return Math.Abs(from.Row - to.Row) == Math.Abs(from.Column - to.Column) ;
             case PieceType.King:
                 return Math.Abs(from.Row - to.Row) <= 1 && Math.Abs(from.Column - to.Column) <= 1;
 
